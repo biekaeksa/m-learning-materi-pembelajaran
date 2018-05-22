@@ -36,11 +36,6 @@ public class NetworkServices {
     }
 
     public static class Builder<T> {
-        private Flowable<T> flowable;
-
-        public Builder(Flowable<T> flowable) {
-            this.flowable = flowable;
-        }
 
         public Builder() {
         }
@@ -53,12 +48,7 @@ public class NetworkServices {
         }
 
 
-        public Builder setFlowables(final Flowable<T> flowable) {
-            this.flowable = flowable;
-            return this;
-        }
-
-        public void load(final CallBack<T> callBack) {
+        public void load(Flowable<T> flowable ,final CallBack<T> callBack) {
             flowable.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new FlowableSubscriber<T>() {
