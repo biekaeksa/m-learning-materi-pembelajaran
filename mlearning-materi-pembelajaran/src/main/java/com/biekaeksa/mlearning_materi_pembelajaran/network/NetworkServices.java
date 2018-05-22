@@ -15,7 +15,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkServices {
-    public Retrofit urlNetwork(String url) {
+    public static Retrofit urlNetwork(String url) {
         OkHttpClient.Builder builder = new OkHttpClient().newBuilder();
         builder.readTimeout(30, TimeUnit.SECONDS);
         builder.connectTimeout(15, TimeUnit.SECONDS);
