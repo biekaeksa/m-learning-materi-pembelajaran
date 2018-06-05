@@ -27,6 +27,9 @@ public class VideoLoader {
         this.urlVideo = urlVideo;
         this.videoView = videoView;
         this.activity = activity;
+
+        Uri uriVideo = Uri.parse(urlVideo);
+        videoView.setVideoURI(uriVideo);
     }
 
 
@@ -42,15 +45,15 @@ public class VideoLoader {
                 }
             }else {
                 activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
             }
         }
         vidControl.setAnchorView(videoView);
         videoView.setMediaController(vidControl);
-        Uri uriVideo = Uri.parse(urlVideo);
-        videoView.setVideoURI(uriVideo);
         videoView.start();
+
     }
+
+
 
 
 

@@ -17,7 +17,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
     @NonNull
     @Override
     public MainViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MainViewHolder(AdapterUtils.setLayout(context, R.layout.activity_main));
+        return new MainViewHolder(AdapterUtils.setLayoutInflater(context, R.layout.activity_main));
     }
 
     @Override
@@ -33,7 +33,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
     public class MainViewHolder extends RecyclerView.ViewHolder {
         public MainViewHolder(View itemView) {
             super(itemView);
-            AdapterUtils displayListString = new AdapterUtils(itemView);
+            AdapterUtils<String> displayListString = new AdapterUtils<>(itemView);
             displayListString.clickItem();
 
         }

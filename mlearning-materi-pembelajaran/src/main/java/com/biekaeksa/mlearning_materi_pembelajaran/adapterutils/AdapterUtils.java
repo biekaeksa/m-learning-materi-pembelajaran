@@ -15,7 +15,7 @@ public class AdapterUtils<T> extends RecyclerView.ViewHolder {
         this.view = itemView;
     }
 
-    public static View setLayout(Context context, int layoutId){
+    public static View setLayoutInflater(Context context, int layoutId){
         return LayoutInflater.from(context).inflate(layoutId, null);
     }
 
