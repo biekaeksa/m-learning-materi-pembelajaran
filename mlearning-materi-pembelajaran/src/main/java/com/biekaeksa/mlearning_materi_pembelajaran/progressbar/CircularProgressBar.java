@@ -60,7 +60,7 @@ public class CircularProgressBar extends View{
 
         progressColor = ta.getColor(R.styleable.CircleProgressBar_progressColor, Color.BLUE);
         backgroundColor = ta.getColor(R.styleable.CircleProgressBar_backgroundColor, Color.GRAY);
-        strokeWidth = ta.getFloat(R.styleable.CircleProgressBar_strokeWidth, 10);
+        strokeWidth = ta.getFloat(R.styleable.CircleProgressBar_strokesWidth, 10);
         backgroundWidth = ta.getFloat(R.styleable.CircleProgressBar_backgroundWidth, 10);
         roundedCorners = ta.getBoolean(R.styleable.CircleProgressBar_roundedCorners, false);
         maxValue = ta.getFloat(R.styleable.CircleProgressBar_maxValue, 100);
