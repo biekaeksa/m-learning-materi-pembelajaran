@@ -192,12 +192,12 @@ public class CircularProgressBar extends View{
         invalidate();
     }
 
-    public void setStrokeWidth(float width){
+    public void setStrokesWidth(float width){
         strokeWidth = width;
         invalidate();
     }
 
-    public float getStrokeWidth(){
+    public float getStrokesWidth(){
         return strokeWidth;
     }
 
