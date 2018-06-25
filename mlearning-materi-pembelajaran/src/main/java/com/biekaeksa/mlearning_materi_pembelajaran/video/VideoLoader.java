@@ -1,39 +1,33 @@
 package com.biekaeksa.mlearning_materi_pembelajaran.video;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.WindowManager;
-import android.widget.MediaController;
 import android.widget.VideoView;
 
-import java.util.Objects;
+import com.pierfrancescosoffritti.youtubeplayer.player.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayer;
+import com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayerInitListener;
+import com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayerView;
+
 
 /**
  * Created by Biekaeksa on 3/20/2018.
  */
 
 public class VideoLoader {
-    private String urlVideo;
-    private VideoView videoView;
     private AppCompatActivity activity;
 
-    public VideoLoader(String urlVideo, VideoView videoView, AppCompatActivity activity) {
-        this.urlVideo = urlVideo;
-        this.videoView = videoView;
+    public VideoLoader(AppCompatActivity activity) {
         this.activity = activity;
-
-        Uri uriVideo = Uri.parse(urlVideo);
-        videoView.setVideoURI(uriVideo);
     }
 
 
-    public void playVideo(){
+    public void playVideo(String urlVideo, VideoView videoView){
+        Uri uriVideo = Uri.parse(urlVideo);
+        videoView.setVideoURI(uriVideo);
         FullScreenMediaController vidControl = new FullScreenMediaController(activity);
         if (activity.getIntent().getStringExtra("fullscreen") != null){
             if (activity.getIntent().getStringExtra("fullscreen").equals("y")){
@@ -50,6 +44,20 @@ public class VideoLoader {
         vidControl.setAnchorView(videoView);
         videoView.setMediaController(vidControl);
         videoView.start();
+    }
+
+    public static void playYoutubeVideo(YouTubePlayerView youTubePlayer, String idVideo){
+        youTubePlayer.initialize(new YouTubePlayerInitListener() {
+            @Override
+            public void onInitSuccess(final YouTubePlayer youTubePlayer) {
+                youTubePlayer.addListener(new AbstractYouTubePlayerListener() {
+                    @Override
+                    public void onReady() {
+                        youTubePlayer.loadVideo(idVideo, 0);
+                    }
+                });
+            }
+        }, true);
 
     }
 

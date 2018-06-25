@@ -1,13 +1,7 @@
 package com.biekaeksa.mlearning_materi_pembelajaran.network;
 
-import android.content.Context;
-
-import org.reactivestreams.Subscription;
-
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Flowable;
-import io.reactivex.FlowableSubscriber;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -40,33 +34,6 @@ public class NetworkServices<T> {
                 .build();
     }
 
-
-    public void subscribe(Flowable<T> flowable, final Callback<T> callBack) {
-        flowable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new FlowableSubscriber<T>() {
-                    @Override
-                    public void onSubscribe(Subscription s) {
-
-                    }
-
-                    @Override
-                    public void onNext(T t) {
-                        callBack.onResponse(t);
-                    }
-
-                    @Override
-                    public void onError(Throwable t) {
-                        callBack.onError(t);
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-
-    }
 
     public void subscribe(Observable<T> observable, final Callback<T> callback){
         observable.subscribeOn(Schedulers.io())
