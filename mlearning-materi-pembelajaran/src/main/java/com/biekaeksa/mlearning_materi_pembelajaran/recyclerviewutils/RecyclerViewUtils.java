@@ -27,11 +27,6 @@ public class RecyclerViewUtils {
     }
 
     public static GridLayoutManager setLayoutGrid(Context context, int countGrid){
-        return new GridLayoutManager(context, countGrid){
-            @Override
-            public RecyclerView.LayoutParams generateDefaultLayoutParams() {
-                return new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            }
-        };
+        return new GridLayoutManager(context, countGrid);
     }
 }
