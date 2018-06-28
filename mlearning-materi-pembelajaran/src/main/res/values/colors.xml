@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="starColor">#0036ff</color>
+    <color name="noteDescriptionTextColor">#45b9ad</color>
+    <color name="titleTextColor">#000000</color>
+    <color name="descriptionTextColor">#a6565555</color>
+    <color name="commentTextColor">#151111</color>
+    <color name="hintTextColor">#55000000</color>
+</resources>
