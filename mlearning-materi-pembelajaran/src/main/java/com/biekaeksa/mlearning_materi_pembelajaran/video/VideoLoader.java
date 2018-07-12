@@ -46,10 +46,10 @@ public class VideoLoader {
         videoView.start();
     }
 
-    public static void playYoutubeVideo(YouTubePlayerView youTubePlayer, String idVideo){
+    public void playYoutubeVideo(YouTubePlayerView youTubePlayer, String idVideo){
         youTubePlayer.initialize(new YouTubePlayerInitListener() {
             @Override
-            public void onInitSuccess(final YouTubePlayer youTubePlayer) {
+            public void onInitSuccess(@NonNull final YouTubePlayer youTubePlayer) {
                 youTubePlayer.addListener(new AbstractYouTubePlayerListener() {
                     @Override
                     public void onReady() {
