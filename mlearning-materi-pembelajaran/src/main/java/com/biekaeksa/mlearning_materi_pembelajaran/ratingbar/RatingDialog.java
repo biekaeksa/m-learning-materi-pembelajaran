@@ -23,9 +23,8 @@ public class RatingDialog implements RatingDialogListener {
     private RatingListener listener;
 
 
-    public RatingDialog(FragmentActivity fragmentActivity, RatingListener listener) {
+    public RatingDialog(FragmentActivity fragmentActivity) {
         this.fragmentActivity = fragmentActivity;
-        this.listener = listener;
     }
 
     public void setTitle(String title) {
