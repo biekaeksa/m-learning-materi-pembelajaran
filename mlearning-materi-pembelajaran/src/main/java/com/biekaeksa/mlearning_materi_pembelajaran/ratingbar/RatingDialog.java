@@ -13,7 +13,7 @@ public class RatingDialog implements RatingDialogListener {
     private FragmentActivity fragmentActivity;
     private String title;
     private String description;
-    private float rating;
+    private int rating;
     private int starColor = 0;
     private int titleTextColor = 0;
     private String hint;
@@ -28,11 +28,11 @@ public class RatingDialog implements RatingDialogListener {
         this.fragmentActivity = fragmentActivity;
     }
 
-    public float getRating() {
+    public int getRating() {
         return rating;
     }
 
-    public void setRating(float rating) {
+    public void setRating(int rating) {
         this.rating = rating;
     }
 
@@ -141,6 +141,7 @@ public class RatingDialog implements RatingDialogListener {
                 .setTitle(getTitle())
                 .setDescription(getDescription())
                 .setStarColor(getStarColor())
+                .setDefaultRating(rating)
                 .setNoteDescriptionTextColor(getStarColor())
                 .setTitleTextColor(getTitleTextColor())
                 .setDescriptionTextColor(getDescriptionTextColor())
