@@ -56,7 +56,7 @@ public class CircularProgressBar extends View{
 
     private void initPaints(Context context, AttributeSet attrs) {
 
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.CircleProgressBar, defStyleAttr, 0);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.CircularProgressBar, defStyleAttr, 0);
 
         progressColor = ta.getColor(R.styleable.CircleProgressBar_progressColor, Color.BLUE);
         backgroundColor = ta.getColor(R.styleable.CircleProgressBar_backgroundColor, Color.GRAY);

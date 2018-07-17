@@ -22,10 +22,16 @@ public class RatingDialog implements RatingDialogListener {
     private int commentTextColor = 0;
     private int commentBackgroundColor = 0;
     private RatingListener listener;
+    private int rate;
+    private String message;
 
 
     public RatingDialog(FragmentActivity fragmentActivity) {
         this.fragmentActivity = fragmentActivity;
+    }
+
+    public String getMessage() {
+        return message;
     }
 
     public int getRating() {
@@ -156,16 +162,17 @@ public class RatingDialog implements RatingDialogListener {
 
     @Override
     public void onPositiveButtonClicked(int i, String s) {
-        listener.positiveButtonClicked(i, s);
+        rate = i;
+        message = s;
     }
 
     @Override
     public void onNegativeButtonClicked() {
-        listener.negativeButtonClicked();
+
     }
 
     @Override
     public void onNeutralButtonClicked() {
-        listener.neutralButtonClicked();
+
     }
 }
