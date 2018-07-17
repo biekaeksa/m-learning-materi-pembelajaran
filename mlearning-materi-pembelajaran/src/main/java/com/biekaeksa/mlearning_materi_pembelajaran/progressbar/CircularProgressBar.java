@@ -58,17 +58,17 @@ public class CircularProgressBar extends View{
 
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.CircularProgressBar, defStyleAttr, 0);
 
-        progressColor = ta.getColor(R.styleable.CircleProgressBar_progressColor, Color.BLUE);
-        backgroundColor = ta.getColor(R.styleable.CircleProgressBar_backgroundColor, Color.GRAY);
-        strokeWidth = ta.getFloat(R.styleable.CircleProgressBar_strokesWidth, 10);
-        backgroundWidth = ta.getFloat(R.styleable.CircleProgressBar_backgroundWidth, 10);
-        roundedCorners = ta.getBoolean(R.styleable.CircleProgressBar_roundedCorners, false);
-        maxValue = ta.getFloat(R.styleable.CircleProgressBar_maxValue, 100);
-        progressTextColor = ta.getColor(R.styleable.CircleProgressBar_progressTextColor, Color.BLACK);
-        textSize = ta.getDimension(R.styleable.CircleProgressBar_textSize, 18);
-        suffix = ta.getString(R.styleable.CircleProgressBar_suffix);
-        prefix = ta.getString(R.styleable.CircleProgressBar_prefix);
-        text = ta.getString(R.styleable.CircleProgressBar_progressText);
+        progressColor = ta.getColor(R.styleable.CircularProgressBar_progressColor, Color.BLUE);
+        backgroundColor = ta.getColor(R.styleable.CircularProgressBar_backgroundColor, Color.GRAY);
+        strokeWidth = ta.getFloat(R.styleable.CircularProgressBar_strokesWidth, 10);
+        backgroundWidth = ta.getFloat(R.styleable.CircularProgressBar_backgroundWidth, 10);
+        roundedCorners = ta.getBoolean(R.styleable.CircularProgressBar_roundedCorners, false);
+        maxValue = ta.getFloat(R.styleable.CircularProgressBar_maxValue, 100);
+        progressTextColor = ta.getColor(R.styleable.CircularProgressBar_progressTextColor, Color.BLACK);
+        textSize = ta.getDimension(R.styleable.CircularProgressBar_textSize, 18);
+        suffix = ta.getString(R.styleable.CircularProgressBar_suffix);
+        prefix = ta.getString(R.styleable.CircularProgressBar_prefix);
+        text = ta.getString(R.styleable.CircularProgressBar_progressText);
 
         progressBarPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         progressBarPaint.setStyle(Paint.Style.FILL);
