@@ -22,7 +22,8 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import static org.junit.Assert.*;
-@RunWith(org.mockito.runners.MockitoJUnitRunner.class)
+
+
 @PrepareForTest(VideoLoader.class)
 public class VideoLoaderTest {
 
@@ -33,24 +34,20 @@ public class VideoLoaderTest {
     @Mock
     private YouTubePlayerView youTubePlayerView;
     @Mock
-    private Intent intent;
+    VideoLoader videoLoader;
+
+
+    String url;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         Mockito.mock(VideoLoader.class);
+        url = "https://www.tes.com/video.mp4";
     }
 
     @Test
     public void playVideo() {
-//        VideoLoader videoLoader = new VideoLoader(activity);
-//
-//        try {
-//            PowerMockito.whenNew(Intent.class)
-//                    .withArguments(String.class).thenReturn(intent);
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-
+        Mockito.verify(videoLoader).playVideo(Mockito.any(), videoView);
     }
 }

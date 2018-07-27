@@ -2,64 +2,113 @@ package com.biekaeksa.mlearning_materi_pembelajaran.image;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
+import android.util.Log;
 import android.widget.ImageView;
 
+import com.biekaeksa.mlearning_materi_pembelajaran.util.NetworkUtils;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 
 public class ImageLoader {
-    /**
-     * Method untuk menampilkan gambar
-     * @param context untuk memberikan akses atas application state
-     * @param imageView imageview yang akan menampilkan gambar
-     * @param url url yang digunakan untuk load gambar
-     */
     public static void load(Context context, String url, ImageView imageView) {
-        Glide.with(context)
-                .load(url)
-                .into(imageView);
+        if (NetworkUtils.isNetworkConnected(context)){
+            Glide.with(context)
+                    .load(url)
+                    .listener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            Log.e("Error :", " can't load url");
+                            return true;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            return false;
+                        }
+                    })
+                    .into(imageView);
+        }else {
+            Log.d(context.getClass().getName()+" :", " No Internet Connection");
+        }
+
     }
 
-    /**
-     * Method untuk menampilkan gambar dengan menampilkan gambar error apabila gagal load gambar
-     * @param context untuk memberikan akses atas application state
-     * @param url url yang digunakan untuk load gambar
-     * @param errorDrawable placeholder untuk menggantikan gambar apabila gagal diload
-     * @param imageView imageview yang akan menampilkan gambar
-     */
     public static void loadWithErrorDrawable(Context context, String url, Drawable errorDrawable, ImageView imageView) {
-        Glide.with(context)
-                .load(url)
-                .apply(new RequestOptions().error(errorDrawable))
-                .into(imageView);
+        if (NetworkUtils.isNetworkConnected(context)){
+            Glide.with(context)
+                    .load(url)
+                    .listener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            Log.e("Error :", " can't load url");
+                            return true;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            return false;
+                        }
+                    })
+                    .apply(new RequestOptions().error(errorDrawable))
+                    .into(imageView);
+        }else {
+            Log.d(context.getClass().getName()+" :", " No Internet Connection");
+        }
+
     }
 
-    /**
-     * Method untuk menampilkan gambar dengan cache agar tiap scrolling tidak load gambar lagi
-     * @param context untuk memberikan atas application state
-     * @param url url yang digunakan untuk load gambar
-     * @param imageView imageview yang akan menampilkan gambar
-     */
     public static void loadWithCache(Context context, String url, ImageView imageView) {
-        Glide.with(context)
-                .load(url)
-                .apply(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.RESOURCE))
-                .into(imageView);
+        if (NetworkUtils.isNetworkConnected(context)){
+            Glide.with(context)
+                    .load(url)
+                    .listener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            Log.e("Error :", " can't load url");
+                            return true;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            return false;
+                        }
+                    })
+                    .apply(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.RESOURCE))
+                    .into(imageView);
+        }else {
+            Log.d(context.getClass().getName()+" :", " No Internet Connection");
+        }
+
     }
 
-    /**
-     * Method untuk menampilkan gambar dengan cache dan error placeholder
-     * @param context untuk memberikan atas application state
-     * @param url url yang digunakan untuk load gambar
-     * @param errorDrawable placeholder yang digunakan apabila gagal load gambar
-     * @param imageView digunakan untuk menampilkan gambar
-     */
     public static void loadWithCache(Context context, String url, Drawable errorDrawable, ImageView imageView) {
-        Glide.with(context)
-                .load(url)
-                .apply(new RequestOptions().error(errorDrawable))
-                .apply(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.RESOURCE))
-                .into(imageView);
+        if (NetworkUtils.isNetworkConnected(context)){
+            Glide.with(context)
+                    .load(url)
+                    .listener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            Log.e("Error :", " can't load url");
+                            return true;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            return false;
+                        }
+                    })
+                    .apply(new RequestOptions().error(errorDrawable))
+                    .apply(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.RESOURCE))
+                    .into(imageView);
+        }else {
+            Log.d(context.getClass().getName()+" :", " No Internet Connection");
+        }
+
     }
 }

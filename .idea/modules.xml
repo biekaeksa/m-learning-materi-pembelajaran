@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/m-learning-library-materi-pembelajaran.iml" filepath="$PROJECT_DIR$/m-learning-library-materi-pembelajaran.iml" />
+      <module fileurl="file://$PROJECT_DIR$/m-learning-materi-pembelajaran.iml" filepath="$PROJECT_DIR$/m-learning-materi-pembelajaran.iml" />
       <module fileurl="file://$PROJECT_DIR$/mlearning-materi-pembelajaran/mlearning-materi-pembelajaran.iml" filepath="$PROJECT_DIR$/mlearning-materi-pembelajaran/mlearning-materi-pembelajaran.iml" />
     </modules>
   </component>
