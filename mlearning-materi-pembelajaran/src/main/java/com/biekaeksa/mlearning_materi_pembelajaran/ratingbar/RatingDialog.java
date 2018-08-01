@@ -10,7 +10,8 @@ import com.stepstone.apprating.listener.RatingDialogListener;
 
 import java.util.Arrays;
 
-public class RatingDialog implements RatingDialogListener {
+public class RatingDialog {
+    private FragmentActivity fragmentActivity;
     private String title;
     private String description;
     private int rating;
@@ -26,8 +27,8 @@ public class RatingDialog implements RatingDialogListener {
     private String message;
 
 
-    public RatingDialog(RatingListener listener) {
-        this.listener = listener;
+    public RatingDialog(FragmentActivity fragmentActivity) {
+        this.fragmentActivity = fragmentActivity;
     }
 
     public String getMessage() {
@@ -138,7 +139,7 @@ public class RatingDialog implements RatingDialogListener {
     }
 
 
-    public void showRatingDialog(FragmentActivity fragmentActivity) {
+    public void showRatingDialog() {
         new AppRatingDialog.Builder()
                 .setPositiveButtonText("Submit")
                 .setNegativeButtonText("Cancel")
@@ -158,22 +159,5 @@ public class RatingDialog implements RatingDialogListener {
                 .setWindowAnimation(R.style.RatingDialogAnimation)
                 .create(fragmentActivity)
                 .show();
-    }
-
-    @Override
-    public void onPositiveButtonClicked(int i, String s) {
-        rate = i;
-        message = s;
-        listener.positiveButtonClicked(i, s);
-    }
-
-    @Override
-    public void onNegativeButtonClicked() {
-        listener.negativeButtonClicked();
-    }
-
-    @Override
-    public void onNeutralButtonClicked() {
-        listener.neutralButtonClicked();
     }
 }
