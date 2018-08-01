@@ -37,18 +37,18 @@ public class RecyclerViewUtilsTest {
     @Test
     public void setLayoutLinear() {
         when(RecyclerViewUtils.setLayoutLinear(context)).thenReturn(layoutManager);
-        assertEquals(layoutManager, RecyclerViewUtils.setLayoutLinear(context));
+        verify(RecyclerViewUtils.setLayoutLinear(context));
     }
 
     @Test
     public void setLayoutHorizontal() {
         when(RecyclerViewUtils.setLayoutHorizontal(context)).thenReturn(layoutManager);
-        assertEquals(layoutManager, RecyclerViewUtils.setLayoutHorizontal(context));
+        verify(RecyclerViewUtils.setLayoutHorizontal(context));
     }
 
     @Test
     public void setLayoutGrid() {
-        when(RecyclerViewUtils.setLayoutGrid(context, 1)).thenReturn(gridLayoutManager);
-        assertEquals(gridLayoutManager, RecyclerViewUtils.setLayoutGrid(context, 1));
+        when(RecyclerViewUtils.setLayoutGrid(context, 2)).thenReturn(gridLayoutManager);
+        verify(RecyclerViewUtils.setLayoutGrid(context, 2));
     }
 }

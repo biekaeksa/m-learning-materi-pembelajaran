@@ -42,12 +42,19 @@ public class VideoLoaderTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        Mockito.mock(VideoLoader.class);
         url = "https://www.tes.com/video.mp4";
     }
 
     @Test
     public void playVideo() {
-        Mockito.verify(videoLoader).playVideo(Mockito.any(), videoView);
+        videoLoader.playVideo(url, videoView);
+        Mockito.verify(videoLoader).playVideo(url, videoView);
+    }
+
+
+    @Test
+    public void playYoutubeVideo(){
+        videoLoader.playYoutubeVideo(youTubePlayerView, "1asd");
+        Mockito.verify(videoLoader).playYoutubeVideo(youTubePlayerView, "1asd");
     }
 }

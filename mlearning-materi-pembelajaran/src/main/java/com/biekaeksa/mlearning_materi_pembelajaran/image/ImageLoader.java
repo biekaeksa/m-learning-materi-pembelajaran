@@ -82,7 +82,7 @@ public class ImageLoader {
                     .apply(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.RESOURCE))
                     .into(imageView);
         }else {
-            Log.d(context.getClass().getName()+" :", " No Internet Connection");
+            Log.d("Error :", " No Internet Connection");
         }
 
     }

@@ -8,10 +8,12 @@ import android.view.View;
 import com.biekaeksa.mlearning_materi_pembelajaran.adapterutils.AdapterUtils;
 import com.biekaeksa.mlearning_materi_pembelajaran.image.ImageLoader;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
@@ -31,42 +33,36 @@ public class AdapterUtilsUnitTest {
     private Context context;
     @Mock
     private View view;
+    @Mock
+    private AdapterUtils.ListenerItem<String> listenerItem;
+    @Mock
+    private
+    AdapterUtils<String> adapterUtils;
+
+
+    @Before
+    public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
+        PowerMockito.mockStatic(AdapterUtils.class);
+    }
 
     @Test
     public void layoutInflater_isCorrect() {
-        PowerMockito.mockStatic(AdapterUtils.class);
-        PowerMockito.mock(LayoutInflater.class);
-        when(AdapterUtils.setLayoutInflater(context, anyInt())).thenReturn(view);
-        assertEquals(view, AdapterUtils.setLayoutInflater(context, anyInt()));
+        when(AdapterUtils.setLayoutInflater(context, 2)).thenReturn(view);
+        assertEquals(view, AdapterUtils.setLayoutInflater(context,2));
+
+        verify(AdapterUtils.class);
     }
 
-//
-//    @Test
-//    public void clickItemCallbackT_isCorrect() {
-//        String tes = "tes";
-//        final String[] hasil = new String[1];
-//
-//
-//        ExampleClass exampleClass = new ExampleClass();
-//        hasil[0] = exampleClass.getItem();
-//
-//        assertEquals("tes", hasil[0]);
-//    }
-//
-//    class ExampleClass implements AdapterUtils.ListenerItem<String> {
-//        private String item;
-//        @Override
-//        public void clickItem(String s) {
-//            setItem(s);
-//        }
-//
-//        public String getItem() {
-//            return item;
-//        }
-//
-//        public void setItem(String item) {
-//            this.item = item;
-//        }
-//    }
+    @Test
+    public void clickItemCallbackT_isCorrect() {
+        adapterUtils.clickItem("This Click Item");
+        listenerItem.clickItem("This Click Item");
+
+        verify(adapterUtils).clickItem("This Click Item");
+        verify(listenerItem).clickItem("This Click Item");
+    }
+
+
 
 }
