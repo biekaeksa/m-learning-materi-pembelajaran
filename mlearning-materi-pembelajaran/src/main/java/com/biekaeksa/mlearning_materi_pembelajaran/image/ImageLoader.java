@@ -23,7 +23,7 @@ public class ImageLoader {
                     .listener(new RequestListener<Drawable>() {
                         @Override
                         public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                            Log.e("Error :", " can't load url");
+                            Log.e("Error ImageLoader ", " can't load url "+url);
                             return true;
                         }
 
@@ -34,7 +34,7 @@ public class ImageLoader {
                     })
                     .into(imageView);
         }else {
-            Log.d(context.getClass().getName()+" :", " No Internet Connection");
+            Log.d("Error ImageLoader ", " No Internet Connection");
         }
 
     }
@@ -46,7 +46,7 @@ public class ImageLoader {
                     .listener(new RequestListener<Drawable>() {
                         @Override
                         public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                            Log.e("Error :", " can't load url");
+                            Log.e("Error ImageLoader ", " can't load url"+url);
                             return true;
                         }
 
@@ -58,7 +58,7 @@ public class ImageLoader {
                     .apply(new RequestOptions().error(errorDrawable))
                     .into(imageView);
         }else {
-            Log.d(context.getClass().getName()+" :", " No Internet Connection");
+            Log.d("Error ImageLoader ", " No Internet Connection");
         }
 
     }
@@ -70,7 +70,7 @@ public class ImageLoader {
                     .listener(new RequestListener<Drawable>() {
                         @Override
                         public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                            Log.e("Error :", " can't load url");
+                            Log.e("Error ", " can't load url "+url);
                             return true;
                         }
 
@@ -82,7 +82,7 @@ public class ImageLoader {
                     .apply(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.RESOURCE))
                     .into(imageView);
         }else {
-            Log.d("Error :", " No Internet Connection");
+            Log.d("Error ", " No Internet Connection");
         }
 
     }
@@ -94,7 +94,7 @@ public class ImageLoader {
                     .listener(new RequestListener<Drawable>() {
                         @Override
                         public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                            Log.e("Error :", " can't load url");
+                            Log.e("Error", " can't load url "+url);
                             return true;
                         }
 
@@ -107,7 +107,7 @@ public class ImageLoader {
                     .apply(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.RESOURCE))
                     .into(imageView);
         }else {
-            Log.d(context.getClass().getName()+" :", " No Internet Connection");
+            Log.d("Error ImageLoader ", " No Internet Connection");
         }
 
     }

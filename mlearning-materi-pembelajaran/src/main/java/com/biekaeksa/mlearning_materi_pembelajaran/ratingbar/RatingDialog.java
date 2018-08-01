@@ -2,6 +2,7 @@ package com.biekaeksa.mlearning_materi_pembelajaran.ratingbar;
 
 
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.biekaeksa.mlearning_materi_pembelajaran.R;
 import com.stepstone.apprating.AppRatingDialog;
@@ -10,7 +11,7 @@ import com.stepstone.apprating.listener.RatingDialogListener;
 import java.util.Arrays;
 
 public class RatingDialog implements RatingDialogListener {
-    private FragmentActivity fragmentActivity;
+    private AppCompatActivity fragmentActivity;
     private String title;
     private String description;
     private int rating;
@@ -26,8 +27,9 @@ public class RatingDialog implements RatingDialogListener {
     private String message;
 
 
-    public RatingDialog(FragmentActivity fragmentActivity) {
+    public RatingDialog(AppCompatActivity fragmentActivity, RatingListener listener) {
         this.fragmentActivity = fragmentActivity;
+        this.listener = listener;
     }
 
     public String getMessage() {
