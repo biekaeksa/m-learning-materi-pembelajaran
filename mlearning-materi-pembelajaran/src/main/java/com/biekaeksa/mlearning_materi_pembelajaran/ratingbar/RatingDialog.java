@@ -22,7 +22,7 @@ public class RatingDialog implements RatingDialogListener {
     private int commentTextColor = 0;
     private int commentBackgroundColor = 0;
     private RatingListener listener;
-    private int rate;
+    private int rate ;
     private String message;
 
 
@@ -164,15 +164,16 @@ public class RatingDialog implements RatingDialogListener {
     public void onPositiveButtonClicked(int i, String s) {
         rate = i;
         message = s;
+        listener.positiveButtonClicked(i, s);
     }
 
     @Override
     public void onNegativeButtonClicked() {
-
+        listener.negativeButtonClicked();
     }
 
     @Override
     public void onNeutralButtonClicked() {
-
+        listener.neutralButtonClicked();
     }
 }
