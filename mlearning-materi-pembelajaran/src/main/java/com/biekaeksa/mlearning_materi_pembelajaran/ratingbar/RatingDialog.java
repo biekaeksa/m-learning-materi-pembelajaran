@@ -22,7 +22,6 @@ public class RatingDialog {
     private int hintTextColor = 0;
     private int commentTextColor = 0;
     private int commentBackgroundColor = 0;
-    private RatingListener listener;
     private int rate ;
     private String message;
 
@@ -133,7 +132,7 @@ public class RatingDialog {
 
     private int getCommentBackgroundColor() {
         if (commentBackgroundColor == 0){
-            commentBackgroundColor = R.color.colorWhite;
+            commentBackgroundColor = R.color.commentBackgroundColor;
         }
         return commentBackgroundColor;
     }

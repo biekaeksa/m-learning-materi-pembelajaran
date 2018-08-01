@@ -7,4 +7,5 @@
     <color name="descriptionTextColor">#a6565555</color>
     <color name="commentTextColor">#151111</color>
     <color name="hintTextColor">#55000000</color>
+    <color name="commentBackgroundColor">#b19b9b</color>
 </resources>
