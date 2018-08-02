@@ -49,7 +49,7 @@ public class ImageLoaderUnitTest {
         ImageLoader.load(context, url, imageView);
 
         PowerMockito.verifyStatic();
-        Log.d("Error : ", " No Internet");
+        Log.d("Error : ", " No Internet Connection");
     }
 
     @Test

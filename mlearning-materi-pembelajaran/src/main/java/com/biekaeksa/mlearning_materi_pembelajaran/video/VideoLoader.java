@@ -29,18 +29,19 @@ public class VideoLoader {
         Uri uriVideo = Uri.parse(urlVideo);
         videoView.setVideoURI(uriVideo);
         FullScreenMediaController vidControl = new FullScreenMediaController(activity);
-        if (activity.getIntent().getStringExtra("fullscreen") != null){
-            if (activity.getIntent().getStringExtra("fullscreen").equals("y")){
-                activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                        WindowManager.LayoutParams.FLAG_FULLSCREEN);
-                activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-                if (activity.getSupportActionBar() != null){
-                    activity.getSupportActionBar().hide();
-                }
-            }else {
-                activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-            }
-        }
+        vidControl.setAppCompatActivity(activity);
+//        if (activity.getIntent().getStringExtra("fullscreen") != null){
+//            if (activity.getIntent().getStringExtra("fullscreen").equals("y")){
+//                activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                        WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//                activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//                if (activity.getSupportActionBar() != null){
+//                    activity.getSupportActionBar().hide();
+//                }
+//            }else {
+//                activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//            }
+//        }
         vidControl.setAnchorView(videoView);
         videoView.setMediaController(vidControl);
         videoView.start();
@@ -60,6 +61,8 @@ public class VideoLoader {
         }, true);
 
     }
+
+
 
 
 

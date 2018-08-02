@@ -22,16 +22,10 @@ public class RatingDialog {
     private int hintTextColor = 0;
     private int commentTextColor = 0;
     private int commentBackgroundColor = 0;
-    private int rate ;
-    private String message;
 
 
     public RatingDialog(FragmentActivity fragmentActivity) {
         this.fragmentActivity = fragmentActivity;
-    }
-
-    public String getMessage() {
-        return message;
     }
 
     public int getRating() {
