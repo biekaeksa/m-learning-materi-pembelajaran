@@ -17,8 +17,6 @@ import android.widget.RelativeLayout;
 import android.widget.VideoView;
 
 import com.pierfrancescosoffritti.youtubeplayer.player.AbstractYouTubePlayerListener;
-import com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayer;
-import com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayerInitListener;
 import com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayerView;
 
 
@@ -44,10 +42,10 @@ public class VideoLoader {
         videoView.setMediaController(vidControl);
         videoView.start();
 
-        ProgressBarHandler progressBarHandler = new ProgressBarHandler(activity);
-        progressBarHandler.show();
-
-        videoView.setOnPreparedListener(mp -> progressBarHandler.hide());
+//        ProgressBarHandler progressBarHandler = new ProgressBarHandler(activity);
+//        progressBarHandler.show();
+//
+//        videoView.setOnPreparedListener(mp -> progressBarHandler.hide());
     }
 
     public void playYoutubeVideo(YouTubePlayerView youTubePlayer, String idVideo) {
@@ -60,39 +58,6 @@ public class VideoLoader {
 
     }
 
-    private class ProgressBarHandler {
-        private ProgressBar mProgressBar;
-        private Context mContext;
-
-        ProgressBarHandler(Context context) {
-            mContext = context;
-
-            ViewGroup layout = (ViewGroup) ((Activity) context).findViewById(android.R.id.content).getRootView();
-
-            mProgressBar = new ProgressBar(context, null, android.R.attr.progressBarStyleLarge);
-            mProgressBar.setIndeterminate(true);
-
-            RelativeLayout.LayoutParams params = new
-                    RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-            params.addRule(RelativeLayout.CENTER_IN_PARENT);
-            RelativeLayout rl = new RelativeLayout(context);
-
-            rl.setGravity(Gravity.CENTER);
-            rl.addView(mProgressBar);
-
-            layout.addView(rl, params);
-
-            hide();
-        }
-
-        void show() {
-            mProgressBar.setVisibility(View.VISIBLE);
-        }
-
-        void hide() {
-            mProgressBar.setVisibility(View.INVISIBLE);
-        }
-    }
 
 
 }
