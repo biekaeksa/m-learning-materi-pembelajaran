@@ -44,40 +44,23 @@ public class FullScreenMediaController extends MediaController {
         params.rightMargin = 90;
         params.bottomMargin = 40;
         addView(imageFullScreen, params);
-
-        isFullScreen = ((Activity) getContext()).getIntent().getStringExtra("fullscreen");
-
-
-        if ("y".equals(isFullScreen)) {
-            imageFullScreen.setImageResource(R.drawable.ic_image_fullscreen_exit);
-        } else {
-            imageFullScreen.setImageResource(R.drawable.ic_image_fullscreen);
-        }
-
-        imageFullScreen.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new Intent(getContext(), ((Activity)context).getClass());
-//                if("y".equals(isFullScreen)){
-//                    intent.putExtra("fullscreen", "n");
-//                }else {
-//                    intent.putExtra("fullscreen", "y");
-//                }
-//                context.startActivity(intent);
-                if ("y".equals(isFullScreen)){
-                    appCompatActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                    isFullScreen = "n";
-                }else {
-                    appCompatActivity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                            WindowManager.LayoutParams.FLAG_FULLSCREEN);
-                    appCompatActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-                    if (appCompatActivity.getSupportActionBar() != null) {
-                        appCompatActivity.getSupportActionBar().hide();
-                    }
-                    isFullScreen = "y";
+        imageFullScreen.setImageResource(R.drawable.ic_image_fullscreen);
+        imageFullScreen.setOnClickListener(view1 -> {
+            if ("y".equals(isFullScreen)){
+                appCompatActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                isFullScreen = "n";
+                imageFullScreen.setImageResource(R.drawable.ic_image_fullscreen);
+            }else {
+                appCompatActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                appCompatActivity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                        WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                if (appCompatActivity.getSupportActionBar() != null) {
+                    appCompatActivity.getSupportActionBar().hide();
                 }
-
+                isFullScreen = "y";
+                imageFullScreen.setImageResource(R.drawable.ic_image_fullscreen_exit);
             }
+
         });
     }
 }

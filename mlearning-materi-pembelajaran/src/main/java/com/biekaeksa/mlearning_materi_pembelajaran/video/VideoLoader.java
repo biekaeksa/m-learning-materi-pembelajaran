@@ -1,6 +1,8 @@
 package com.biekaeksa.mlearning_materi_pembelajaran.video;
 
+import android.app.ProgressDialog;
 import android.content.pm.ActivityInfo;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +21,7 @@ import com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayerView;
 
 public class VideoLoader {
     private AppCompatActivity activity;
+    private ProgressDialog progressDialog;
 
     public VideoLoader(AppCompatActivity activity) {
         this.activity = activity;
@@ -30,35 +33,20 @@ public class VideoLoader {
         videoView.setVideoURI(uriVideo);
         FullScreenMediaController vidControl = new FullScreenMediaController(activity);
         vidControl.setAppCompatActivity(activity);
-//        if (activity.getIntent().getStringExtra("fullscreen") != null){
-//            if (activity.getIntent().getStringExtra("fullscreen").equals("y")){
-//                activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                        WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//                activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//                if (activity.getSupportActionBar() != null){
-//                    activity.getSupportActionBar().hide();
-//                }
-//            }else {
-//                activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-//            }
-//        }
         vidControl.setAnchorView(videoView);
         videoView.setMediaController(vidControl);
         videoView.start();
+        progressDialog = ProgressDialog.show(activity, "Please wait ....", "Retrieving video ...", false);
+        videoView.setOnPreparedListener(mp -> progressDialog.dismiss());
     }
 
     public void playYoutubeVideo(YouTubePlayerView youTubePlayer, String idVideo){
-        youTubePlayer.initialize(new YouTubePlayerInitListener() {
+        youTubePlayer.initialize(youTubePlayer1 -> youTubePlayer1.addListener(new AbstractYouTubePlayerListener() {
             @Override
-            public void onInitSuccess(@NonNull final YouTubePlayer youTubePlayer) {
-                youTubePlayer.addListener(new AbstractYouTubePlayerListener() {
-                    @Override
-                    public void onReady() {
-                        youTubePlayer.loadVideo(idVideo, 0);
-                    }
-                });
+            public void onReady() {
+                youTubePlayer1.loadVideo(idVideo, 0);
             }
-        }, true);
+        }), true);
 
     }
 
