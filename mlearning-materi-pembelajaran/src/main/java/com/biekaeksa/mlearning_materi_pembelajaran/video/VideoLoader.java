@@ -21,7 +21,7 @@ import com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayerView;
 
 public class VideoLoader {
     private AppCompatActivity activity;
-    private ProgressDialog progressDialog;
+
 
     public VideoLoader(AppCompatActivity activity) {
         this.activity = activity;
@@ -36,8 +36,7 @@ public class VideoLoader {
         vidControl.setAnchorView(videoView);
         videoView.setMediaController(vidControl);
         videoView.start();
-        progressDialog = ProgressDialog.show(activity, "Please wait ....", "Retrieving video ...", false);
-        videoView.setOnPreparedListener(mp -> progressDialog.dismiss());
+//        videoView.setOnPreparedListener(mp -> );
     }
 
     public void playYoutubeVideo(YouTubePlayerView youTubePlayer, String idVideo){
