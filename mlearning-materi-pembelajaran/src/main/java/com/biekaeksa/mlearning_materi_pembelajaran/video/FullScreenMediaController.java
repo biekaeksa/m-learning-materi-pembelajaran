@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -65,6 +66,7 @@ public class FullScreenMediaController extends MediaController {
 //                context.startActivity(intent);
                 if ("y".equals(isFullScreen)){
                     appCompatActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                    isFullScreen = "n";
                 }else {
                     appCompatActivity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                             WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -72,11 +74,10 @@ public class FullScreenMediaController extends MediaController {
                     if (appCompatActivity.getSupportActionBar() != null) {
                         appCompatActivity.getSupportActionBar().hide();
                     }
+                    isFullScreen = "y";
                 }
 
             }
         });
     }
-
-
 }
