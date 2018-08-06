@@ -45,6 +45,7 @@ public class FullScreenMediaController extends MediaController {
         params.bottomMargin = 40;
         addView(imageFullScreen, params);
         imageFullScreen.setImageResource(R.drawable.ic_image_fullscreen);
+
         imageFullScreen.setOnClickListener(view1 -> {
             if ("y".equals(isFullScreen)){
                 appCompatActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);

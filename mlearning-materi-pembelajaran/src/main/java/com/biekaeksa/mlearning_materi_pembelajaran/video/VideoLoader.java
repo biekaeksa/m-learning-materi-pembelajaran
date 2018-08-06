@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,16 +36,26 @@ public class VideoLoader {
 
     public void playVideo(String urlVideo, VideoView videoView) {
         Uri uriVideo = Uri.parse(urlVideo);
-        videoView.setVideoURI(uriVideo);
-        FullScreenMediaController vidControl = new FullScreenMediaController(activity);
-        vidControl.setAppCompatActivity(activity);
-        vidControl.setAnchorView(videoView);
-        videoView.setMediaController(vidControl);
-        videoView.start();
-
         ProgressBarHandler progressBarHandler = new ProgressBarHandler(activity);
         progressBarHandler.show();
 
+        try{
+            FullScreenMediaController vidControl = new FullScreenMediaController(activity);
+            vidControl.setAppCompatActivity(activity);
+            vidControl.setAnchorView(videoView);
+            videoView.setVideoURI(uriVideo);
+            videoView.setMediaController(vidControl);
+        }catch (Exception e){
+            progressBarHandler.hide();
+            Log.e("Error", e.getMessage());
+            e.printStackTrace();
+        }
+        videoView.requestFocus();
+        videoView.setOnErrorListener((mp, what, extra) -> {
+            progressBarHandler.hide();
+            Log.e("Error", "Can't Load url");
+            return true;
+        });
         videoView.setOnPreparedListener(mp -> progressBarHandler.hide());
     }
 

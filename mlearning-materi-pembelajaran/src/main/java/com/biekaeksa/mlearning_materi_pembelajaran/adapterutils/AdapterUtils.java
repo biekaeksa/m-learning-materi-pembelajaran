@@ -5,15 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 public class AdapterUtils<T> {
-    private View view;
     private AdapterUtils.ListenerItem<T> listenerItem;
-
-    public AdapterUtils(View itemView) {
-        this.view = itemView;
-    }
-
-    public AdapterUtils() {
-    }
 
     public static View setLayoutInflater(Context context, int layoutId) {
         return LayoutInflater.from(context).inflate(layoutId, null);

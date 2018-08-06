@@ -34,6 +34,8 @@ public class NetworkServicesTest {
     private NetworkServices<List<CourseModel>> networkServices;
     @Mock
     private NetworkServices services;
+    @Mock
+    private Callback<List<CourseModel>> callback;
 
     private Observable<List<CourseModel>> observable;
     private String url;
@@ -66,24 +68,20 @@ public class NetworkServicesTest {
     @Test
     public void urlNetwork() {
         Mockito.when(services.urlNetwork(url)).thenReturn(rest);
-//        observable = services.urlNetwork(url).create(APIService.class).getListVideo();
-
     }
 
     @Test
     public void subscribe() {
-        urlNetwork();
-        observable = services.urlNetwork(url).create(APIService.class).getListVideo();
-//        NetworkServices<List<CourseModel>> listNetworkServices = new NetworkServices<>()
+        observable = rest.create(APIService.class).getListVideo();
         networkServices.subscribe(observable, new Callback<List<CourseModel>>() {
             @Override
             public void onResponse(List<CourseModel> courseModels) {
-
+                assertEquals(response, courseModels);
             }
 
             @Override
             public void onError(Throwable e) {
-
+                fail(e.getMessage());
             }
         });
 

@@ -70,7 +70,7 @@ public class ImageLoader {
                     .listener(new RequestListener<Drawable>() {
                         @Override
                         public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                            Log.e("Error ", " can't load url "+url);
+                            Log.e("Error ImageLoader", " can't load url "+url);
                             return true;
                         }
 

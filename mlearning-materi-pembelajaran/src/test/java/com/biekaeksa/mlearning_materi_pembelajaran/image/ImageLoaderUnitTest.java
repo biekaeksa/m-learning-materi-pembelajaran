@@ -1,4 +1,4 @@
-package com.biekaeksa.mlearning_materi_pembelajaran;
+package com.biekaeksa.mlearning_materi_pembelajaran.image;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -48,8 +48,7 @@ public class ImageLoaderUnitTest {
         String url = "http://hindayani.com/wp-content/uploads/2014/05/Contoh-Introduction-Cara-Memperkenalkan-Diri-Dalam-Bahasa-Inggris.png";
         ImageLoader.load(context, url, imageView);
 
-        PowerMockito.verifyStatic();
-        Log.d("Error : ", " No Internet Connection");
+        verify(ImageLoader.class);
     }
 
     @Test
@@ -57,7 +56,7 @@ public class ImageLoaderUnitTest {
         ImageLoader.loadWithCache(context,
                 "http://hindayani.com/wp-content/uploads/2014/05/Contoh-Introduction-Cara-Memperkenalkan-Diri-Dalam-Bahasa-Inggris.png",
                 imageView);
-
+        verify(ImageLoader.class);
     }
 
     @Test
