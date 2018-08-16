@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.pierfrancescosoffritti.youtubeplayer.player.AbstractYouTubePlayerListener;
@@ -53,7 +54,7 @@ public class VideoLoader {
         videoView.requestFocus();
         videoView.setOnErrorListener((mp, what, extra) -> {
             progressBarHandler.hide();
-            Log.e("Error", "Can't Load url");
+            Toast.makeText(activity, "Error Video", Toast.LENGTH_SHORT).show();
             return true;
         });
         videoView.setOnPreparedListener(mp -> progressBarHandler.hide());
@@ -64,6 +65,12 @@ public class VideoLoader {
             @Override
             public void onReady() {
                 youTubePlayer1.loadVideo(idVideo, 0);
+            }
+
+            @Override
+            public void onError(int error) {
+                super.onError(error);
+                Toast.makeText(activity, "Video Youtube Not Found", Toast.LENGTH_SHORT).show();
             }
         }), true);
 

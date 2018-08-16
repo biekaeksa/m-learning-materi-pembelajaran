@@ -34,10 +34,10 @@ public class VideoLoaderTest {
     @Mock
     private YouTubePlayerView youTubePlayerView;
     @Mock
-    VideoLoader videoLoader;
+    private VideoLoader videoLoader;
 
 
-    String url;
+    private String url;
 
     @Before
     public void setUp() throws Exception {
@@ -53,7 +53,7 @@ public class VideoLoaderTest {
 
 
     @Test
-    public void playYoutubeVideo(){
+    public void playYoutubeVideo() {
         videoLoader.playYoutubeVideo(youTubePlayerView, "1asd");
         Mockito.verify(videoLoader).playYoutubeVideo(youTubePlayerView, "1asd");
     }

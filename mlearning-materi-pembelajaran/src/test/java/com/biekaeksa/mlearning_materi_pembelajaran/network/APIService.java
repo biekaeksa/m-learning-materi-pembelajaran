@@ -10,4 +10,7 @@ import retrofit2.http.GET;
 public interface APIService {
     @GET("video")
     Observable<List<CourseModel>> getListVideo();
+
+    @GET("vide")
+    Observable<List<CourseModel>> getListVideoError();
 }

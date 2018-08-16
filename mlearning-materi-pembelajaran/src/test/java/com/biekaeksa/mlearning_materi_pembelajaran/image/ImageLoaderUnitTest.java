@@ -33,8 +33,6 @@ public class ImageLoaderUnitTest {
     private Context context;
     @Mock
     private ImageView imageView;
-    @Mock
-    private Drawable drawable;
 
     @Before
     public void setup() {
@@ -62,14 +60,14 @@ public class ImageLoaderUnitTest {
     @Test
     public void testLoadImageWithError() {
         ImageLoader.loadWithErrorDrawable(context, "http://hindayani.com/wp-content/uploads/2014/05/Contoh-Introduction-Cara-Memperkenalkan-Diri-Dalam-Bahasa-Inggris.png",
-                drawable, imageView);
+                2, imageView);
         verify(ImageLoader.class);
     }
 
     @Test
     public void testLoadImageWithErrorCache() {
         ImageLoader.loadWithCache(context, "http://hindayani.com/wp-content/uploads/2014/05/Contoh-Introduction-Cara-Memperkenalkan-Diri-Dalam-Bahasa-Inggris.png",
-                drawable, imageView);
+                3, imageView);
         verify(ImageLoader.class);
     }
 

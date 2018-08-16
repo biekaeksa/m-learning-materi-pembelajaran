@@ -11,11 +11,11 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseAdapter<T, VH extends BaseViewHolder<T>> extends RecyclerView.Adapter<VH> {
+public abstract class SimpleAdapter<T, VH extends BaseViewHolder<T>> extends RecyclerView.Adapter<VH> {
     private List<T> item;
     private Context context;
 
-    public BaseAdapter(Context context) {
+    public SimpleAdapter(Context context) {
         this.context = context;
         item = new ArrayList<>();
     }
@@ -23,6 +23,7 @@ public abstract class BaseAdapter<T, VH extends BaseViewHolder<T>> extends Recyc
     @NonNull
     @Override
     public abstract VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType);
+
 
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {

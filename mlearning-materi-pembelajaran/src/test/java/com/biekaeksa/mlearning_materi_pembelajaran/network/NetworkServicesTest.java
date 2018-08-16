@@ -71,7 +71,7 @@ public class NetworkServicesTest {
     }
 
     @Test
-    public void subscribe() {
+    public void testSubscribeSuccess() {
         observable = rest.create(APIService.class).getListVideo();
         networkServices.subscribe(observable, new Callback<List<CourseModel>>() {
             @Override
@@ -84,6 +84,37 @@ public class NetworkServicesTest {
                 fail(e.getMessage());
             }
         });
+    }
 
+    @Test
+    public void testSubscribeErrorUrl() {
+        observable = rest.create(APIService.class).getListVideoError();
+        networkServices.subscribe(observable, new Callback<List<CourseModel>>() {
+            @Override
+            public void onResponse(List<CourseModel> courseModels) {
+                //get data
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                assertEquals("HTTP 404", e.getMessage());
+            }
+        });
+    }
+
+    @Test
+    public void testSubscribeErrorConnection() {
+        observable = rest.create(APIService.class).getListVideoError();
+        networkServices.subscribe(observable, new Callback<List<CourseModel>>() {
+            @Override
+            public void onResponse(List<CourseModel> courseModels) {
+                //get data
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                assertEquals("No Internet Connection", e.getMessage());
+            }
+        });
     }
 }

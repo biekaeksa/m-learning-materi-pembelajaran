@@ -39,7 +39,7 @@ public class ImageLoader {
 
     }
 
-    public static void loadWithErrorDrawable(Context context, String url, Drawable errorDrawable, ImageView imageView) {
+    public static void loadWithErrorDrawable(Context context, String url, int errorDrawable, ImageView imageView) {
         if (NetworkUtils.isNetworkConnected(context)){
             Glide.with(context)
                     .load(url)
@@ -87,7 +87,7 @@ public class ImageLoader {
 
     }
 
-    public static void loadWithCache(Context context, String url, Drawable errorDrawable, ImageView imageView) {
+    public static void loadWithCache(Context context, String url, int errorDrawable, ImageView imageView) {
         if (NetworkUtils.isNetworkConnected(context)){
             Glide.with(context)
                     .load(url)
