@@ -27,7 +27,7 @@ import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(ImageLoader.class)
+@PrepareForTest(NetworkUtils.class)
 public class ImageLoaderUnitTest {
     @Mock
     private Context context;
@@ -38,15 +38,33 @@ public class ImageLoaderUnitTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         PowerMockito.mockStatic(ImageLoader.class);
-
+        PowerMockito.mockStatic(Log.class);
+        PowerMockito.mockStatic(NetworkUtils.class);
     }
 
     @Test
     public void testLoadImage() {
         String url = "http://hindayani.com/wp-content/uploads/2014/05/Contoh-Introduction-Cara-Memperkenalkan-Diri-Dalam-Bahasa-Inggris.png";
         ImageLoader.load(context, url, imageView);
-
         verify(ImageLoader.class);
+    }
+
+    @Test
+    public void testLoadImageErrorUrl() {
+        String url = "http://hindayani.com/wp-content/uploads/2014/05/Contoh-Introduction-Cara-Memperkenalkan-Diri-Dalam-Bahasa-Inggris";
+        ImageLoader.load(context, url, imageView);
+        PowerMockito.verifyStatic(Mockito.times(1));
+        Log.e(Mockito.anyString(), Mockito.anyString());
+
+    }
+
+    @Test
+    public void testLoadImageErrorConnection() {
+        String url = "http://hindayani.com/wp-content/uploads/2014/05/Contoh-Introduction-Cara-Memperkenalkan-Diri-Dalam-Bahasa-Inggris";
+        ImageLoader.load(context, url, imageView);
+        PowerMockito.verifyStatic(Mockito.times(1));
+        Log.d(Mockito.anyString(), Mockito.anyString());
+
     }
 
     @Test

@@ -1,18 +1,13 @@
 package com.biekaeksa.mlearning_materi_pembelajaran.video;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
-import android.media.MediaPlayer;
 import android.net.Uri;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -40,21 +35,22 @@ public class VideoLoader {
         ProgressBarHandler progressBarHandler = new ProgressBarHandler(activity);
         progressBarHandler.show();
 
-        try{
+        try {
             FullScreenMediaController vidControl = new FullScreenMediaController(activity);
             vidControl.setAppCompatActivity(activity);
             vidControl.setAnchorView(videoView);
             videoView.setVideoURI(uriVideo);
             videoView.setMediaController(vidControl);
-        }catch (Exception e){
+        } catch (Exception e) {
             progressBarHandler.hide();
-            Log.e("Error", e.getMessage());
             e.printStackTrace();
         }
         videoView.requestFocus();
+
         videoView.setOnErrorListener((mp, what, extra) -> {
             progressBarHandler.hide();
-            Toast.makeText(activity, "Error Video", Toast.LENGTH_SHORT).show();
+            Log.d("Error Video", "Video Url is wrong");
+            showMessage("Error Video");
             return true;
         });
         videoView.setOnPreparedListener(mp -> progressBarHandler.hide());
@@ -70,10 +66,15 @@ public class VideoLoader {
             @Override
             public void onError(int error) {
                 super.onError(error);
-                Toast.makeText(activity, "Video Youtube Not Found", Toast.LENGTH_SHORT).show();
+                Log.d("Error Youtube Video", "Video Youtube Not Found");
+                showMessage("Video Youtube Not Found");
             }
         }), true);
 
+    }
+
+    private void showMessage(String message) {
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
     }
 
     private class ProgressBarHandler {
