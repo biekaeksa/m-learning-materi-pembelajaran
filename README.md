@@ -59,7 +59,7 @@ Java
        
         NetworkServices<List<CourseModel>> networkServices = new NetworkServices<>();
         Observable<List<CourseModel>> call = networkServices.
-        urlNetwork("http://comrades-api.azurewebsites.net/v2/").create(APIServices.class)
+        urlNetwork("http://www.example.com/").create(APIServices.class)
                 .getListVideo();
         networkServices.subscribe(call, new Callback<List<CourseModel>>() {
             @Override
